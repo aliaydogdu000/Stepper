@@ -14,37 +14,43 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  changeIsCompletedValue(int index) {
+    setState(() {
+      stepperModelList[index].isCompleted = true;
+    });
+  }
+
   List<StepperDetailModel> stepperModelList = [
     StepperDetailModel(
-        stepperChildWidget: const Text("1.Sayfa"),
-        canTurnBack: true,
-        ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
-        isCompleted: false),
+      stepperChildWidget: const Text("1.Sayfa"),
+      canTurnBack: true,
+      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+    ),
     StepperDetailModel(
-        stepperChildWidget: const Text("2.Sayfa"),
-        canTurnBack: true,
-        ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
-        isCompleted: false),
+      stepperChildWidget: const Text("2.Sayfa"),
+      canTurnBack: true,
+      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+    ),
     StepperDetailModel(
-        stepperChildWidget: const Text("3.Sayfa"),
-        canTurnBack: true,
-        ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
-        isCompleted: false),
+      stepperChildWidget: const Text("3.Sayfa"),
+      canTurnBack: true,
+      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+    ),
     StepperDetailModel(
-        stepperChildWidget: const Text("4.Sayfa"),
-        canTurnBack: true,
-        ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
-        isCompleted: false),
+      stepperChildWidget: const Text("4.Sayfa"),
+      canTurnBack: true,
+      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+    ),
     StepperDetailModel(
-        stepperChildWidget: const Text("5.Sayfa"),
-        canTurnBack: true,
-        ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
-        isCompleted: false),
+      stepperChildWidget: const Text("5.Sayfa"),
+      canTurnBack: true,
+      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+    ),
     StepperDetailModel(
-        stepperChildWidget: const Text("6.Sayfa"),
-        canTurnBack: true,
-        ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
-        isCompleted: false),
+      stepperChildWidget: const Text("6.Sayfa"),
+      canTurnBack: true,
+      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+    ),
   ];
   int stepperCurrentIndex = 0;
   @override
@@ -58,7 +64,7 @@ class _MyAppState extends State<MyApp> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  stepperModelList[stepperCurrentIndex].isCompleted == true;
+                  changeIsCompletedValue(stepperCurrentIndex);
                   print(stepperModelList[stepperCurrentIndex].isCompleted);
                   stepperCurrentIndex++;
                 });
