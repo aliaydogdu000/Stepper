@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
     ),
     StepperDetailModel(
       stepperChildWidget: const Text("3.Sayfa"),
-      canTurnBack: true,
+      canTurnBack: false,
       ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
     ),
     StepperDetailModel(
@@ -65,19 +65,22 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 setState(() {
                   changeIsCompletedValue(stepperCurrentIndex);
-                  print(stepperModelList[stepperCurrentIndex].isCompleted);
+
                   stepperCurrentIndex++;
                 });
               },
               child: const Text("dsddfds"),
             ),
             AppStepper(
+              stepperChildWidget: stepperModelList[stepperCurrentIndex].isCompleted == true &&
+                      stepperModelList[stepperCurrentIndex].canTurnBack == false
+                  ? stepperModelList[stepperCurrentIndex].ifCanNotTurnBackWidget!
+                  : stepperModelList[stepperCurrentIndex].stepperChildWidget,
               currentPageIndex: stepperCurrentIndex,
               stepNumber: 6,
               onPageChanged: (value) {
                 setState(() {
                   stepperCurrentIndex = value;
-                  print(value);
                 });
               },
               stepperModelList: stepperModelList,

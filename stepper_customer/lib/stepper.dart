@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:stepper_customer/stepper_model.dart';
 
 class AppStepper extends StatelessWidget {
+  final Widget stepperChildWidget;
   final int currentPageIndex;
   final int stepNumber;
   final List<String>? labelNameList;
   final Function(int) onPageChanged;
   final List<StepperDetailModel> stepperModelList;
 
-  AppStepper({
+  const AppStepper({
     super.key,
     required this.currentPageIndex,
     required this.stepNumber,
     required this.onPageChanged,
     this.labelNameList,
     required this.stepperModelList,
+    required this.stepperChildWidget,
   });
 
   void updateCurrentIndex(int index) => onPageChanged(index);
@@ -32,7 +34,7 @@ class AppStepper extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [...stepGenerate(context)],
             ),
-            stepperModelList[currentPageIndex].stepperChildWidget
+            stepperChildWidget
           ],
         ),
       ),
@@ -71,9 +73,7 @@ class AppStepper extends StatelessWidget {
                         shape: BoxShape.circle,
                         border: Border.all(
                           width: 1,
-                          color: currentPageIndex == index
-                              ? Colors.red
-                              : Colors.purple,
+                          color: currentPageIndex == index ? Colors.red : Colors.purple,
                         ),
                         color: currentPageIndex - 1 < index
                             ? currentPageIndex == index
@@ -84,13 +84,8 @@ class AppStepper extends StatelessWidget {
                       child: currentPageIndex - 1 < index
                           ? Text(
                               "${index + 1}",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                    color: currentPageIndex == index
-                                        ? Colors.blue
-                                        : Colors.brown,
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: currentPageIndex == index ? Colors.blue : Colors.brown,
                                     fontSize: 14,
                                   ),
                             )
