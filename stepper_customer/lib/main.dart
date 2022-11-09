@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
     ),
     StepperDetailModel(
       stepperChildWidget: const Text("5.Sayfa"),
-      canTurnBack: true,
+      canTurnBack: false,
       ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
     ),
     StepperDetailModel(
@@ -55,27 +55,17 @@ class _MyAppState extends State<MyApp> {
   int stepperCurrentIndex = 0;
   @override
   Widget build(BuildContext context) {
+    StepperDetailModel stepperCurrent = stepperModelList[stepperCurrentIndex];
     return MaterialApp(
       home: Scaffold(
           body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  changeIsCompletedValue(stepperCurrentIndex);
-
-                  stepperCurrentIndex++;
-                });
-              },
-              child: const Text("dsddfds"),
-            ),
             AppStepper(
-              stepperChildWidget: stepperModelList[stepperCurrentIndex].isCompleted == true &&
-                      stepperModelList[stepperCurrentIndex].canTurnBack == false
-                  ? stepperModelList[stepperCurrentIndex].ifCanNotTurnBackWidget!
-                  : stepperModelList[stepperCurrentIndex].stepperChildWidget,
+              stepperChildWidget: stepperCurrent.isCompleted == true && stepperCurrent.canTurnBack == false
+                  ? stepperCurrent.ifCanNotTurnBackWidget!
+                  : stepperCurrent.stepperChildWidget,
               currentPageIndex: stepperCurrentIndex,
               stepNumber: 6,
               onPageChanged: (value) {
@@ -84,7 +74,18 @@ class _MyAppState extends State<MyApp> {
                 });
               },
               stepperModelList: stepperModelList,
-            )
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  changeIsCompletedValue(stepperCurrentIndex);
+                  if (stepperCurrentIndex < 5) {
+                    stepperCurrentIndex++;
+                  }
+                });
+              },
+              child: const Text("Buton"),
+            ),
           ],
         ),
       )),

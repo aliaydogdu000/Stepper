@@ -73,19 +73,19 @@ class AppStepper extends StatelessWidget {
                         shape: BoxShape.circle,
                         border: Border.all(
                           width: 1,
-                          color: currentPageIndex == index ? Colors.red : Colors.purple,
+                          color: currentPageIndex == index ? Colors.red : Colors.red,
                         ),
                         color: currentPageIndex - 1 < index
                             ? currentPageIndex == index
-                                ? Colors.green
-                                : Colors.amber
-                            : Colors.black),
+                                ? Colors.white
+                                : Colors.white70
+                            : Colors.red),
                     child: Center(
                       child: currentPageIndex - 1 < index
                           ? Text(
                               "${index + 1}",
                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: currentPageIndex == index ? Colors.blue : Colors.brown,
+                                    color: currentPageIndex == index ? Colors.red : Colors.black,
                                     fontSize: 14,
                                   ),
                             )
@@ -114,7 +114,7 @@ class AppStepper extends StatelessWidget {
             index != stepNumber - 1
                 ? Container(
                     margin: const EdgeInsets.symmetric(horizontal: 15),
-                    color: Colors.pink,
+                    color: Colors.red,
                     constraints: const BoxConstraints(
                       minWidth: 12,
                       maxWidth: 24,
