@@ -34,7 +34,7 @@ class AppStepper extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [...stepGenerate(context)],
             ),
-            stepperChildWidget
+            stepperChildWidget,
           ],
         ),
       ),

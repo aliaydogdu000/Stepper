@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stepper_customer/stepper.dart';
+import 'package:stepper_customer/stepperCannotTurnBackWidget.dart';
 import 'package:stepper_customer/stepper_model.dart';
 
 void main() {
@@ -22,32 +23,39 @@ class _MyAppState extends State<MyApp> {
 
   List<StepperDetailModel> stepperModelList = [
     StepperDetailModel(
-      stepperChildWidget: const Text("1.Sayfa"),
+      stepperChildWidget: const Text(
+        style: TextStyle(fontWeight: FontWeight.bold),
+        '1.Şube Seçimi',
+      ),
       canTurnBack: true,
       ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
     ),
     StepperDetailModel(
-      stepperChildWidget: const Text("2.Sayfa"),
+      stepperChildWidget: const Text(style: TextStyle(fontWeight: FontWeight.bold), "2.Adres Teyidi"),
       canTurnBack: true,
       ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
     ),
     StepperDetailModel(
-      stepperChildWidget: const Text("3.Sayfa"),
+      stepperChildWidget: const Text(style: TextStyle(fontWeight: FontWeight.bold), "3.Hesap Açılış Süreci"),
       canTurnBack: false,
-      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+      ifCanNotTurnBackWidget: const IfCannotTurnBackWidget(
+        bottomWidget: Page3CannotTurnBackWidget(),
+      ),
     ),
     StepperDetailModel(
-      stepperChildWidget: const Text("4.Sayfa"),
+      stepperChildWidget: const Text(style: TextStyle(fontWeight: FontWeight.bold), "4.Uygunluk Testi"),
       canTurnBack: true,
       ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
     ),
     StepperDetailModel(
-      stepperChildWidget: const Text("5.Sayfa"),
+      stepperChildWidget: const Text(style: TextStyle(fontWeight: FontWeight.bold), "5.Sözleşme Onayı"),
       canTurnBack: false,
-      ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
+      ifCanNotTurnBackWidget: const IfCannotTurnBackWidget(
+        bottomWidget: Page5CannotTurnBackWidget(),
+      ),
     ),
     StepperDetailModel(
-      stepperChildWidget: const Text("6.Sayfa"),
+      stepperChildWidget: const Text(style: TextStyle(fontWeight: FontWeight.bold), "6.Belge Yükleme"),
       canTurnBack: true,
       ifCanNotTurnBackWidget: const Text("Bu sayfayı güncelleyemezsiniz."),
     ),
